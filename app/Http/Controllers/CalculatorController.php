@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 class CalculatorController extends Controller
 {
-    // Kalkulator
+    
     public function add(Request $request)
     {
         $result = $request->input('a') + $request->input('b');
