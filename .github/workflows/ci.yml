@@ -22,16 +22,16 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, bcmath, xml
 
-      - name: Check PHP Version
-        run: php -v
-
-      - name: Install Composer dependencies
+      - name: Instalacija Composer paketa
         run: |
           curl -sS https://getcomposer.org/installer | php
           php composer.phar install --prefer-dist --no-interaction
 
-      - name: Generate APP_KEY  # Dodato rešenje
+      - name: Kreiranje .env fajla
+        run: cp .env.example .env
+
+      - name: Generisanje APP_KEY
         run: php artisan key:generate
 
-      - name: Run tests
+      - name: Pokretanje testova
         run: php artisan test
