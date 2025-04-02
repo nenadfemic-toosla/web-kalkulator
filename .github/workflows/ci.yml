@@ -19,8 +19,11 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'  # Promenite na 8.2 da se poklapa sa vašim lokalnim okruženjem
           extensions: mbstring, bcmath, xml
+
+      - name: Check PHP Version  # Dodato ovde
+        run: php -v
 
       - name: Install Composer dependencies
         run: |
