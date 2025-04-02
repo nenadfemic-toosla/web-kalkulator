@@ -19,16 +19,19 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Promenite na 8.2 da se poklapa sa vašim lokalnim okruženjem
+          php-version: '8.2'
           extensions: mbstring, bcmath, xml
 
-      - name: Check PHP Version  # Dodato ovde
+      - name: Check PHP Version
         run: php -v
 
       - name: Install Composer dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php
           php composer.phar install --prefer-dist --no-interaction
+
+      - name: Generate APP_KEY  # Dodato rešenje
+        run: php artisan key:generate
 
       - name: Run tests
         run: php artisan test
